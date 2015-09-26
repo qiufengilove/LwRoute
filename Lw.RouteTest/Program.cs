@@ -52,8 +52,9 @@ namespace Lw.RouteTest
             Console.WriteLine("测试"+ count +"次匹配，消耗时间:"+ timecount.ElapsedMilliseconds+"毫秒");
             Debug.Assert(dict != null && dict.ContainsKey("action") && dict["action"].ToString() == "mytest", "测试检索action失败");
             //Debug.Assert(dict != null && dict.ContainsKey("name") && dict["name"].ToString() == "3000", "测试检索Id失败");
-            
+
             Console.WriteLine(result.ToString());
+            Console.WriteLine(dict["name"].ToString());
             //Console.WriteLine(dict["action"]+"                "+dict["id"]);
         }
     }
