@@ -12,7 +12,7 @@ namespace Lw.Route.Routes
     /// <summary>
     /// Url路由和处理方法统一管理类
     /// </summary>
-    public class UrlManager
+    class UrlManager
     {
         /// <summary>
         /// Url路由和处理方法统一管理类
