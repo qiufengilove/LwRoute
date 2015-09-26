@@ -13,16 +13,31 @@ namespace Lw.RouteTest
     {
         static void Main(string[] args)
         {
+#if OldExample
             //匹配自定义规则
             RouteHelper.RegistRoute("/u-test/{action}-{id:int}/{name:long}");
             //可空的Email
             RouteHelper.RegistRoute("/d-test/{action}/{name:email?}");
             //可空的QQ
             RouteHelper.RegistRoute("/n-test/{action}/{name:qq?}");
-            //可空的Id
+            //可空的int
             RouteHelper.RegistRoute("/u-test/{action}/{id:int?}");
             //自定义正则表达式(只接受字母)
             RouteHelper.RegistRoute("/u-regex/{action}/{name:^[a-zA-Z]+$}");
+#else
+            RouteHelper.RegistRoute(
+                //匹配自定义规则
+                Tuple.Create("/u-test/{action}-{id:int}/{name:long}", 0)
+                //可空的Email
+                , Tuple.Create("/d-test/{action}/{name:email?}", 0)
+                //可空的QQ
+                , Tuple.Create("/n-test/{action}/{name:qq?}", 0)
+                //可空的int
+                , Tuple.Create("/u-test/{action}/{id:int?}", 0)
+                //自定义正则表达式(只接受字母)
+                , Tuple.Create("/u-regex/{action}/{name:^[a-zA-Z]+$}", 0)
+                );
+#endif
             int count = 1000000;
             //var testUrl = "/u-test/mytest/3000";
             var testUrl = "/u-regex/mytest/afdAW";
