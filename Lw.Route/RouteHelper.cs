@@ -70,38 +70,53 @@ namespace Lw.Route
         /// <param name="insertTo"></param>
         public static void RegistRoute(string url, int insertTo = -1)
         {
-            //第一个为域名参数，如果以~/或者/开头，说明使用默认的域名
-            //主机部分(做二级域名)
-            if (string.IsNullOrEmpty(url))
+            RegistRoute(Tuple.Create(url,insertTo));
+        }
+        /// <summary>
+        /// 注册路由
+        /// <para>约定的规则为 name:rulename或者name:length(最小长度,最大长度)或者name:regex(正则表达式)</para>
+        /// </summary>
+        /// <param name="urlRules">比如:/n-admin/{action}/{id:int?}</param>
+        public static void RegistRoute(params Tuple<string,int>[] urlRules)
+        {
+            if (urlRules == null || urlRules.Length < 1)
                 return;
-            //作为Url键值
-            string clearUrl;
-            var rules = GetUrlSplit(url, out clearUrl);
-            if (rules == null)
-            {
-                //首页/
-                return;
-            }
             List<UrlManager> newList = new List<UrlManager>();
-            List<UrlManager> tempList= RouteMappings;
-            if (tempList != null)
+            List<UrlManager> tempList = RouteMappings;
+            foreach (var tuple in urlRules)
             {
-                foreach (var manage in tempList)
+                //第一个为域名参数，如果以~/或者/开头，说明使用默认的域名
+                //主机部分(做二级域名)
+                var url = tuple.Item1;
+                if (string.IsNullOrEmpty(url))
+                    continue;
+                string clearUrl;
+                var rules = GetUrlSplit(url, out clearUrl);
+                if (rules == null)
                 {
-                    if (manage.UrlRule.Equals(clearUrl, StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new Exception("已经包含此路由名称");
-                    }
-                    newList.Add(manage);
+                    //首页/
+                    return;
                 }
-            }
-            if (insertTo < 0 || insertTo >= newList.Count)
-            {
-                newList.Add(new UrlManager(clearUrl, rules));
-            }
-            else
-            {
-                newList.Insert(insertTo, new UrlManager(clearUrl, rules));
+                if (tempList != null)
+                {
+                    foreach (var manage in tempList)
+                    {
+                        if (manage.UrlRule.Equals(clearUrl, StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new Exception("已经包含此路由名称");
+                        }
+                        newList.Add(manage);
+                    }
+                }
+                int insertTo = tuple.Item2;
+                if (insertTo < 0 || insertTo >= newList.Count)
+                {
+                    newList.Add(new UrlManager(clearUrl, rules));
+                }
+                else
+                {
+                    newList.Insert(insertTo, new UrlManager(clearUrl, rules));
+                }
             }
             Interlocked.Exchange(ref RouteMappings, newList);
         }
