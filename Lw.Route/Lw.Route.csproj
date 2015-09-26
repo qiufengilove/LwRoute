@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F2238F5A-3A78-4798-8DED-B4020ED0C5D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lw.Route</RootNamespace>
+    <AssemblyName>Lw.Route</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteHelper.cs" />
+    <Compile Include="Routes\Mappings\BoolMatch.cs" />
+    <Compile Include="Routes\Mappings\BoolNullMatch.cs" />
+    <Compile Include="Routes\Mappings\ByteMatch.cs" />
+    <Compile Include="Routes\Mappings\ByteNullMatch.cs" />
+    <Compile Include="Routes\Mappings\ChineseMatch.cs" />
+    <Compile Include="Routes\Mappings\ChineseNullMatch.cs" />
+    <Compile Include="Routes\Mappings\DateMatch.cs" />
+    <Compile Include="Routes\Mappings\DateNullMatch.cs" />
+    <Compile Include="Routes\Mappings\DateTimeMatch.cs" />
+    <Compile Include="Routes\Mappings\DateTimeNullMatch.cs" />
+    <Compile Include="Routes\Mappings\DecimalMatch.cs" />
+    <Compile Include="Routes\Mappings\DecimalNullMatch.cs" />
+    <Compile Include="Routes\Mappings\DoubleMatch.cs" />
+    <Compile Include="Routes\Mappings\DoubleNullMatch.cs" />
+    <Compile Include="Routes\Mappings\EmailMatch.cs" />
+    <Compile Include="Routes\Mappings\EmailNullMatch.cs" />
+    <Compile Include="Routes\Mappings\FloatMatch.cs" />
+    <Compile Include="Routes\Mappings\FloatNullMatch.cs" />
+    <Compile Include="Routes\Mappings\IdcardMatch.cs" />
+    <Compile Include="Routes\Mappings\IdcardNullMatch.cs" />
+    <Compile Include="Routes\Mappings\IntMatch.cs" />
+    <Compile Include="Routes\Mappings\IntNullMatch.cs" />
+    <Compile Include="Routes\Mappings\IRouteMatch.cs" />
+    <Compile Include="Routes\Mappings\LengthMatch.cs" />
+    <Compile Include="Routes\Mappings\LettersMatch.cs" />
+    <Compile Include="Routes\Mappings\LongMatch.cs" />
+    <Compile Include="Routes\Mappings\LongNullMatch.cs" />
+    <Compile Include="Routes\Mappings\MacMatch.cs" />
+    <Compile Include="Routes\Mappings\MacNullMatch.cs" />
+    <Compile Include="Routes\Mappings\MappingBase.cs" />
+    <Compile Include="Routes\Mappings\MobileMatch.cs" />
+    <Compile Include="Routes\Mappings\MobileNullMatch.cs" />
+    <Compile Include="Routes\Mappings\PhoneMatch.cs" />
+    <Compile Include="Routes\Mappings\PhoneNullMatch.cs" />
+    <Compile Include="Routes\Mappings\PostcodeMatch.cs" />
+    <Compile Include="Routes\Mappings\PostcodeNullMatch.cs" />
+    <Compile Include="Routes\Mappings\QQMatch.cs" />
+    <Compile Include="Routes\Mappings\QQNullMatch.cs" />
+    <Compile Include="Routes\Mappings\RegexMappingBase.cs" />
+    <Compile Include="Routes\Mappings\RegexMatch.cs" />
+    <Compile Include="Routes\Mappings\SByteMatch.cs" />
+    <Compile Include="Routes\Mappings\SByteNullMatch.cs" />
+    <Compile Include="Routes\Mappings\ShortMatch.cs" />
+    <Compile Include="Routes\Mappings\ShortNullMatch.cs" />
+    <Compile Include="Routes\Mappings\TelMatch.cs" />
+    <Compile Include="Routes\Mappings\TelNullMatch.cs" />
+    <Compile Include="Routes\Mappings\UIntMatch.cs" />
+    <Compile Include="Routes\Mappings\UIntNullMatch.cs" />
+    <Compile Include="Routes\Mappings\ULongMatch.cs" />
+    <Compile Include="Routes\Mappings\ULongNullMatch.cs" />
+    <Compile Include="Routes\Mappings\UrlNameMapAttribute.cs" />
+    <Compile Include="Routes\Mappings\UShortMatch.cs" />
+    <Compile Include="Routes\Mappings\UShortNullMatch.cs" />
+    <Compile Include="Routes\UrlManager.cs" />
+    <Compile Include="Routes\UrlPart.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
