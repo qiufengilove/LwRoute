@@ -9,6 +9,7 @@ using System.Linq;
 using Lw.Route.Routes;
 using Lw.Route.Routes.Mappings;
 using System.Threading;
+using System.Runtime.CompilerServices;
 
 namespace Lw.Route
 {
@@ -77,6 +78,7 @@ namespace Lw.Route
         /// <para>约定的规则为 name:rulename或者name:length(最小长度,最大长度)或者name:regex(正则表达式)</para>
         /// </summary>
         /// <param name="urlRules">比如:/n-admin/{action}/{id:int?}</param>
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void RegistRoute(params Tuple<string,int>[] urlRules)
         {
             if (urlRules == null || urlRules.Length < 1)
@@ -126,6 +128,7 @@ namespace Lw.Route
         /// <param name="testUrl"></param>
         /// <param name="paramter"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static bool IsMatch(string testUrl,out IDictionary<string,object> paramter)
         {
             string clearUrl;
