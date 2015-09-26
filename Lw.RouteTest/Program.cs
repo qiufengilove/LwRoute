@@ -11,7 +11,6 @@ namespace Lw.RouteTest
 {
     class Program
     {
-        [Debuggable]
         static void Main(string[] args)
         {
             //匹配自定义规则
