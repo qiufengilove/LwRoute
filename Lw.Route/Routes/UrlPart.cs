@@ -13,7 +13,7 @@ namespace Lw.Route.Routes
     /// <summary>
     /// 表示/分隔的每一个Url部分
     /// </summary>
-    public class UrlPart
+    class UrlPart
     {
         /// <summary>
         /// 表示/分隔的每一个Url部分
@@ -111,7 +111,7 @@ namespace Lw.Route.Routes
                     }
                     //验证规则
                     if(start==0)
-                        throw new Exception("Url规则设定错误，两个自定义规则不能连接在一起");
+                        throw new Exception("Url规则设定错误，两个特定路由规则不能连接在一起");
                 }
             }
         }
