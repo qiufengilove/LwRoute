@@ -136,9 +136,9 @@ namespace Lw.Route
                 paramter = null;
                 return false;
             }
-            IDictionary<string, object> dict = new Dictionary<string, object>();
             if (RouteMappings != null)
             {
+                IDictionary<string, object> dict = new Dictionary<string, object>();
                 foreach (var match in RouteMappings)
                 {
                     dict.Clear();
