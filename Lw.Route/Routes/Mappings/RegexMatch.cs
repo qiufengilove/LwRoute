@@ -24,11 +24,11 @@ namespace Lw.Route.Routes.Mappings
             this.regexString = regexString;
             this.regex = new Regex(regexString, RegexOptions.Compiled);
             this._defaultStr = defaultStr;
+            _isNullAble = (_defaultStr != null && _defaultStr.Length > 0);
             if (_isNullAble)
                 _keyName = string.Format("{0}||{1}", regexString, _defaultStr);
             else
                 _keyName = regexString;
-            _isNullAble = (_defaultStr != null && _defaultStr.Length > 0);
         }
         readonly string _defaultStr;
         readonly string _keyName;
