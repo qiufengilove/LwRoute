@@ -34,13 +34,16 @@ namespace Lw.RouteTest
                 , Tuple.Create("/n-test/{action}/{name:qq?}", 0)
                 //可空的int
                 , Tuple.Create("/u-test/{action}/{id:int?}", 0)
+                //自定义正则表达式(只接受字母|带默认值)
+                , Tuple.Create("/u-regexdefault/{action:^[a-zA-Z0-9]+$||Index}/{id:int?}", 0)
                 //自定义正则表达式(只接受字母)
-                , Tuple.Create("/u-regex/{action}/{name:^[a-zA-Z]+$}", 0)
+                , Tuple.Create("/u-regex/{action}/{name:^[a-zA-Z]+$||default}", 0)
                 );
 #endif
             int count = 1000000;
             //var testUrl = "/u-test/mytest/3000";
-            var testUrl = "/u-regex/mytest/afdAW";
+            //var testUrl = "/u-regex/mytest/afdAW";
+            var testUrl = "/u-regexdefault";
             IDictionary<string, object> dict = null;
             var timecount = System.Diagnostics.Stopwatch.StartNew();
             bool result=false;
@@ -54,7 +57,7 @@ namespace Lw.RouteTest
             //Debug.Assert(dict != null && dict.ContainsKey("name") && dict["name"].ToString() == "3000", "测试检索Id失败");
 
             Console.WriteLine(result.ToString());
-            Console.WriteLine(dict["name"].ToString());
+            Console.WriteLine(dict["action"].ToString());
             //Console.WriteLine(dict["action"]+"                "+dict["id"]);
         }
     }
