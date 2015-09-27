@@ -75,7 +75,9 @@ namespace Lw.Route.Routes
                 {
                     if (i > maxIndex)
                     {
-                        if (!UrlParts[i].IsNullAble)
+                        //if (!UrlParts[i].IsNullAble)
+                        //    return false;
+                        if (!UrlParts[i].IsMatch(null, ref resultRouteData))
                             return false;
                         continue;
                     }
