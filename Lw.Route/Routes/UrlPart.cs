@@ -89,7 +89,16 @@ namespace Lw.Route.Routes
                             }
                             else
                             {
-                                var tempRoute = new RegexMatch(tempRuleClass.RuleKey);
+                                RegexMatch tempRoute;
+                                int defaultIndex = tempRuleClass.RuleKey.IndexOf("||", StringComparison.Ordinal);
+                                if (defaultIndex > 0)
+                                {
+                                    var regexStr = tempRuleClass.RuleKey.Substring(0, defaultIndex);
+                                    var defaultStr = tempRuleClass.RuleKey.Substring(defaultIndex + 2);
+                                    tempRoute = new RegexMatch(regexStr, defaultStr);
+                                }
+                                else
+                                    tempRoute = new RegexMatch(tempRuleClass.RuleKey);
                                 tempFuncDict[tempRoute.GetKeyName] = tempRoute;
                                 tempRuleClass.RuleKey = tempRoute.GetKeyName;
                                 KeyAndIsConst.Add(tempRuleClass);
