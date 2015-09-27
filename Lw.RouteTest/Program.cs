@@ -24,6 +24,8 @@ namespace Lw.RouteTest
             RouteHelper.RegistRoute("/u-test/{action}/{id:int?}");
             //自定义正则表达式(只接受字母)
             RouteHelper.RegistRoute("/u-regex/{action}/{name:^[a-zA-Z]+$}");
+            //自定义正则表达式(只接受字母||带默认值)
+            RouteHelper.RegistRoute("/u-regexdefault/{action:^[a-zA-Z0-9]+$||Index}/{id:int?}");
 #else
             RouteHelper.RegistRoute(
                 //匹配自定义规则
@@ -34,7 +36,7 @@ namespace Lw.RouteTest
                 , Tuple.Create("/n-test/{action}/{name:qq?}", 0)
                 //可空的int
                 , Tuple.Create("/u-test/{action}/{id:int?}", 0)
-                //自定义正则表达式(只接受字母|带默认值)
+                //自定义正则表达式(只接受字母||带默认值)
                 , Tuple.Create("/u-regexdefault/{action:^[a-zA-Z0-9]+$||Index}/{id:int?}", 0)
                 //自定义正则表达式(只接受字母)
                 , Tuple.Create("/u-regex/{action}/{name:^[a-zA-Z]+$||default}", 0)
