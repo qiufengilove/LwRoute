@@ -28,7 +28,7 @@ namespace Lw.Route.Routes.Mappings
                 _keyName = string.Format("{0}||{1}", regexString, _defaultStr);
             else
                 _keyName = regexString;
-            _isNullAble = (_defaultStr != null || _defaultStr.Length > 0);
+            _isNullAble = (_defaultStr != null && _defaultStr.Length > 0);
         }
         readonly string _defaultStr;
         readonly string _keyName;
