@@ -5,6 +5,7 @@
 /// </summary>
 using Lw.Route.Routes.Mappings;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -35,7 +36,7 @@ namespace Lw.Route.Routes
             //约定的规则为 name:rulename或者name:length(最小长度,最大长度)或者name:正则表达式
             //n-{name:email}
             var tempFuncDict =RouteHelper.RouteMatchFuncs;
-            lock (tempFuncDict)
+            lock (((ICollection)tempFuncDict).SyncRoot)
             {
                 int start = UrlRule.IndexOf('{');
                 int end = UrlRule.IndexOf('}');
